@@ -1,0 +1,77 @@
+﻿@model Lai_Kep.Models.Laikep
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="d-flex flex-column">
+	<h1 class="text-center my-5 text-uppercase">TÍNH LÃI KÉP</h1>
+	<div class="d-flex flex-column justify-content-between">
+		<input type="number" id="langui" value="@Model.SoLanGui" hidden />
+		<div class="col-4 mx-auto mb-1">
+				<form asp-action="Index" asp-controller="LaiKep" id="myform" method="post">
+				<div class="mb-3">
+					<label for="soTien" class="form-label">Số tiền</label>
+                    <input type="text" class="form-control" id="soTien" name="soTien" value="@(Model.Sotien == 0 ? "" : Model.Sotien.ToString("n0"))" placeholder="Nhập số tiền">
+					<label for="laiSuat" class="form-label">Lãi suất %/năm</label>
+                    <input type="number" class="form-control" id="laiSuat" name="laiSuat" value="@(Model.Laisuat == 0 ? "" : Model.Laisuat)" min="0" max="100" placeholder="Nhập lãi suất">
+					<label for="soNam" class="form-label">Số năm</label>
+                    <input type="number" class="form-control" id="soNam" name="soNam" value="@(Model.Sonam == 0 ? "" : Model.Sonam)" min="0" placeholder="Nhập số năm">
+                    <div class="d-flex flex-column justify-content-center align-items-center">
+                        <div class="form-group">
+                            <label for="mySelect">Chọn số lần đóng/năm:</label>
+                            <select class="form-control" id="mySelect" name="soLanGui">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input type="radio" class="form-check-input" id="soLan1" name="soLanGui" value="1">
+                                <label class="form-check-label" for="soLan1">1</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" class="form-check-input" id="soLan2" name="soLanGui" value="2">
+                                <label class="form-check-label" for="soLan2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" class="form-check-input" id="soLan3" name="soLanGui" value="3">
+                                <label class="form-check-label" for="soLan3">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" class="form-check-input" id="soLan4" name="soLanGui" value="4">
+                                <label class="form-check-label" for="soLan4">4</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input type="checkbox" class="form-check-input" id="check1" name="soLanGui" value="1">
+                                <label class="form-check-label" for="check1">1</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="checkbox" class="form-check-input" id="check2" name="soLanGui" value="2">
+                                <label class="form-check-label" for="check2">2</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="checkbox" class="form-check-input" id="check3" name="soLanGui" value="3">
+                                <label class="form-check-label" for="check3">3</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="checkbox" class="form-check-input" id="check4" name="option4" value="4">
+                                <label class="form-check-label" for="check4">4</label>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+				<div class="d-flex align-items-center mx-auto">
+					<button type="submit" id="ketqua" class="btn btn-primary px-4 py-2 mx-auto">Xem kết quả</button>
+				</div>
+			</form>
+		</div>
+		<div class="mb-5 col-4 mx-auto mt-0">
+			<label for="ketQua" class="form-label fw-bold">Kết quả</label>
+			<input type="text" class="form-control" id="ketQua" name="ketQua" value="@Model.KetQua.ToString("n0")">
+		</div>
+	</div>
+</div>
